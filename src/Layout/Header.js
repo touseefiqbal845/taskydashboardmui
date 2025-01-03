@@ -45,9 +45,8 @@ const AppBarComponent = ({ open, handleDrawerClose }) => (
       </IconButton> */}
 
       <Typography
-        variant="h7"
         noWrap
-        sx={{ color: "black", fontWeight: "bold" }}
+        sx={{ color: "black", fontWeight: "bold",fontSize:"20px" }}
       >
         Dashboard
       </Typography>

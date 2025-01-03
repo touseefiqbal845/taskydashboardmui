@@ -20,7 +20,7 @@ const Members = () => (
           display: "flex",
           flexDirection: "column",
           backgroundColor: "white",
-          width: "45%",
+          width: "49%",
           borderRadius: 3,
           p: 3,
         }}
@@ -112,7 +112,7 @@ const Members = () => (
             >
               <Typography
                 sx={{
-                  fontSize: "10px",
+                  fontSize: "12px",
                   fontWeight: 600,
                 }}
               >
@@ -120,15 +120,15 @@ const Members = () => (
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "7px",
-                  fontWeight: 500,
+                  fontSize: "9px",
+                  fontWeight: 600,
                 }}
               >
                 Food Dashboard Design
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "6px",
+                  fontSize: "7px",
                   fontWeight: 300,
                 }}
               >
@@ -147,14 +147,15 @@ const Members = () => (
           >
             <CustomButton
               title="00:40:00"
-              MFontSize="10px"
-              width="90px"
+              MFontSize="12px"
+              width="95px"
               bgColor="#fff5db"
             />
             <CustomButton
               title="00:40:00"
-              MFontSize="10px"
-              width="90px"
+              MFontSize="12px"
+
+              width="95px"
               bgColor="#fff5db"
               //   marginLeft="10px"
             />
@@ -200,7 +201,7 @@ const Members = () => (
             >
               <Typography
                 sx={{
-                  fontSize: "10px",
+                  fontSize: "12px",
                   fontWeight: 600,
                 }}
               >
@@ -208,15 +209,15 @@ const Members = () => (
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "7px",
-                  fontWeight: 500,
+                  fontSize: "9px",
+                  fontWeight: 600,
                 }}
               >
                 Food Dashboard Design
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "6px",
+                  fontSize: "7px",
                   fontWeight: 300,
                 }}
               >
@@ -236,14 +237,14 @@ const Members = () => (
           >
             <CustomButton
               title="00:40:00"
-              MFontSize="10px"
-              width="90px"
+              MFontSize="12px"
+              width="95px"
               bgColor="#fff5db"
             />
             <CustomButton
               title="00:40:00"
-              MFontSize="10px"
-              width="90px"
+              MFontSize="12px"
+              width="95px"
               bgColor="#fff5db"
               //   marginLeft="10px"
             />
@@ -256,7 +257,7 @@ const Members = () => (
           display: "flex",
           flexDirection: "column",
           backgroundColor: "white",
-          width: "45%",
+          width: "49%",
           borderRadius: 3,
           p: 3,
         }}
@@ -357,7 +358,7 @@ const Members = () => (
 
               <Typography
                 sx={{
-                  fontSize: "10px",
+                  fontSize: "12px",
                   fontWeight: 600,
                   marginLeft: "10px",
                 }}
@@ -375,8 +376,8 @@ const Members = () => (
             >
               <CustomButton
                 title="00:40:00"
-                MFontSize="10px"
-                width="25px"
+                MFontSize="12px"
+                width="95px"
                 bgColor="#fff5db"
               />
               <CustomizedProgressBars widthstack={"90px"} marginLeft={"10px"} />
@@ -393,9 +394,9 @@ const Members = () => (
         >
           <CustomButton
             title="View All"
-            MFontSize="10px"
+            MFontSize="12px"
             color="white"
-            width="70px"
+            width="95px"
             bgColor="#000000"
             sx={{
               alignSelf: "flex-end",

@@ -20,7 +20,7 @@ const Projects = () => (
             display: "flex",
             flexDirection: "column",
             backgroundColor: "white",
-            width: "45%",
+            width: "49%",
             borderRadius: 3,
             p: 3,
           }}
@@ -59,7 +59,7 @@ const Projects = () => (
               />
               <Typography
                 sx={{
-                  fontSize: "10px",
+                  fontSize: "12px",
                   fontWeight: 600,
                   marginLeft: "10px",
                 }}
@@ -69,8 +69,8 @@ const Projects = () => (
             </Box>
             <CustomButton
               title="View All"
-              MFontSize="10px"
-              width="90px"
+              MFontSize="12px"
+              width="95px"
               bgColor="#fff5db"
             />
           </Box>
@@ -99,7 +99,7 @@ const Projects = () => (
             display: "flex",
             flexDirection: "column",
             backgroundColor: "white",
-            width: "45%",
+            width: "49%",
             borderRadius: 3,
             p: 3,
           }}
@@ -156,7 +156,7 @@ const Projects = () => (
 
                 <Typography
                   sx={{
-                    fontSize: "10px",
+                    fontSize: "12px",
                     fontWeight: 600,
                     marginLeft: "10px",
                   }}
@@ -174,8 +174,8 @@ const Projects = () => (
               >
                 <CustomButton
                   title="00:40:00"
-                  MFontSize="10px"
-                  width="25px"
+                  MFontSize="12px"
+                  width="95px"
                   bgColor="#fff5db"
                 />
                 <CustomizedProgressBars
@@ -195,9 +195,9 @@ const Projects = () => (
           >
             <CustomButton
               title="View All"
-              MFontSize="10px"
+              MFontSize="12px"
               color="white"
-              width="70px"
+              width="95px"
               bgColor="#000000"
               sx={{
                 alignSelf: "flex-end",

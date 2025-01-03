@@ -12,7 +12,7 @@ const TextwithMenu = ({ text }) => {
         width:"100%"
       }}
     >
-      <Typography  sx={{ fontWeight: 500,fontSize:"15px" }}>
+      <Typography  sx={{ fontWeight: 600,fontSize:"20px" }}>
         {text}
       </Typography>
       <Box

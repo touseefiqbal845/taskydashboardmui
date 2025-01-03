@@ -39,7 +39,7 @@ const WorkedCount = () => (
             >
               <Typography
                 sx={{
-                  fontSize: "30px",
+                  fontSize: "40px",
                   fontWeight: 700,
                 }}
               >

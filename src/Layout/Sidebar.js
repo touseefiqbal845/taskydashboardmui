@@ -142,7 +142,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
               sx={{
                 opacity: open ? 1 : 0,
                 color: "inherit",
-                marginLeft: "25px"
+                marginLeft:  open ? "25px" : "0px",
               }}
             />
           </ListItemButton>
