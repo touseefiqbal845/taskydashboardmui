@@ -246,7 +246,7 @@ export default function Login() {
                               color: "black",
                             }}
                             onClick={() => {
-                              navigate("/reset-password");
+                              navigate("/forgot-password");
                             }}
                             style={{
                               marginTop: "10px",
