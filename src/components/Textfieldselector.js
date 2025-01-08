@@ -9,7 +9,7 @@ const WorkspaceSelector = () => {
     setWorkspace(event.target.value);
   };
 
-  return (
+  return ( 
     <Box
       sx={{
         display: "flex",
