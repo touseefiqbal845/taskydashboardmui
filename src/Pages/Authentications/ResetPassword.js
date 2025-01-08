@@ -1,3 +1,5 @@
+
+import { useSearchParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import bgimg from "../../assets/backimage.webp";
@@ -49,16 +51,20 @@ const center = {
   left: "30%",
 };
 
-export default function ForgotPassword() {
+export default function ResetPassword() {
+  const [searchParams] = useSearchParams();
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
 
   const [values, setValues] = useState({
-    email: "",
+    password: "",
+    newpassword:"",
   });
 
   const [error, setError] = useState({
-    email: false,
+    password: false,
+    newpassword:false,
+
   });
   const [loginError, setLoginError] = useState("");
   const [resetSuccess, setResetSuccess] = useState("");
@@ -68,38 +74,45 @@ export default function ForgotPassword() {
   const horizontal = "right";
   const navigate = useNavigate();
 
+    const token = searchParams.get("token");
+  const email = searchParams.get("email");
+
    const handleSubmit = async (event) => {
     event.preventDefault();
 
     setError({
-      email: false,
+        password: false,
+        newpassword: false,
     });
 
-    const { email } = values;
+    const { password,newpassword } = values;
 
-    if (!email) {
+    const isPasswordValid = password && password.length >= 6;
+    if (!email || !password || !newpassword || password !== newpassword ||  !isPasswordValid) {
       setError((prev) => ({
         ...prev,
-        email: !email,
+        password: !password || password.length < 6,
+        newpassword: !newpassword || password !== newpassword,
+
       }));
 
       return;
     }
 
     try {
-      const data = { email };
+      const data = { password,email,token };
       console.log("Request Data:", data);
-      const response = await authService.resetrequest(data);
+      const response = await authService.resetEmail(data);
       console.log("Response:", response);
       // setTimeout(() => {
       //   navigate("/dashboard");
       // }, 2000);
       setResetSuccess(
-         "Password Successfully sent."
+         "Mail sent."
       );
     } catch (error) {
       setLoginError(
-        error.response?.data?.message || "Login failed. Please try again."
+        error.response?.data?.message || "Update failed. Please try again."
       );
       console.error("Login Error:", error);
     }
@@ -178,7 +191,7 @@ export default function ForgotPassword() {
                         color: "black",
                       }}
                     >
-                      Forgot password
+                      Reset password
                     </Typography>
                   </Box>
                   <Box
@@ -190,21 +203,64 @@ export default function ForgotPassword() {
                     <Grid container spacing={1}>
                       <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                         <CustomInput
-                          name="email"
+                          name="password"
                           type="email"
-                          title="Email"
-                          error={error.email}
+                          title="Pevious Password"
+                          error={error.password}
                           inputFontSize={12}
-                          placeholder="Enter Your Email"
+                          placeholder="Enter Previous Password"
                           height="1.7vh"
                           fontWeight={400}
                           fontSize={14}
                           showLabel={true}
-                          value={values.email}
+                          value={values.password}
                           onChange={handleChange}
-                          helperText="Email is required"
+                          helperText={error.password ? 
+                            (values.password ? "Password must be at least 6 characters" : "Password is required") 
+                            : ""}  />
+                      </Grid>
+                      <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
+                        <CustomInput
+                          name="newpassword"
+                          type="email"
+                          title="New Password"
+                          error={error.newpassword}
+                          inputFontSize={12}
+                          placeholder="Enter New Password"
+                          height="1.7vh"
+                          fontWeight={400}
+                          fontSize={14}
+                          showLabel={true}
+                          value={values.newpassword}
+                          onChange={handleChange}
+                          helperText={
+                            error.newpassword
+                              ? values.password !== values.newpassword
+                                ? "Passwords do not match"
+                                : "Confirm Password is required"
+                              : ""
+                          }
                         />
-                         {resetSuccess && (
+                       
+                      </Grid>
+                      <Grid item xs={12} sx={{ ml: "3em", mr: "5em" }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          fullWidth="true"
+                          size="large"
+                          sx={{
+                            mt: "15px",
+                            // mr: "20px",
+                            borderRadius: 28,
+                            color: "black",
+                            minWidth: "170px",
+                            backgroundColor: "rgb(255, 192, 0)",
+                          }}
+                        >
+                          Update Password
+                        </Button>
+                        {resetSuccess && (
                             <Typography
                               variant="body2"
                               color="success"
@@ -223,25 +279,8 @@ export default function ForgotPassword() {
                             </Typography>
                           )}
                       </Grid>
-                     
-                      <Grid item xs={12} sx={{ ml: "3em", mr: "5em" }}>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          fullWidth="true"
-                          size="large"
-                          sx={{
-                            mt: "15px",
-                            // mr: "20px",
-                            borderRadius: 28,
-                            color: "black",
-                            minWidth: "170px",
-                            backgroundColor: "rgb(255, 192, 0)",
-                          }}
-                        >
-                          Send Reset Link
-                        </Button>
-                      </Grid>
+
+                   
                       <Grid item xs={12} sx={{ ml: "3em", mr: "3em" ,mt:"8px"}}>
                         <Stack direction="row" spacing={2}>
                           <Typography
@@ -276,3 +315,76 @@ export default function ForgotPassword() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from "react";
+// import { useSearchParams } from "react-router-dom";
+// import axios from "axios";
+
+// const ResetPassword = () => {
+//   const [searchParams] = useSearchParams();
+//   const [password, setPassword] = useState("");
+//   const [confirmPassword, setConfirmPassword] = useState("");
+//   const [message, setMessage] = useState("");
+
+//   const token = searchParams.get("token");
+//   const email = searchParams.get("email");
+
+//   const handleResetPassword = async (e) => {
+//     e.preventDefault();
+
+//     if (password !== confirmPassword) {
+//       setMessage("Passwords do not match.");
+//       return;
+//     }
+
+//     try {
+//       const response = await axios.post(
+//         "https://your-backend-url/api/auth/reset-password",
+//         { email, token, password }
+//       );
+//       setMessage("Password reset successful! You can now log in.");
+//     } catch (error) {
+//       setMessage("Error resetting password. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h1>Reset Password</h1>
+//       <form onSubmit={handleResetPassword}>
+//         <div>
+//           <label>New Password:</label>
+//           <input
+//             type="password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//             required
+//           />
+//         </div>
+//         <div>
+//           <label>Confirm Password:</label>
+//           <input
+//             type="password"
+//             value={confirmPassword}
+//             onChange={(e) => setConfirmPassword(e.target.value)}
+//             required
+//           />
+//         </div>
+//         <button type="submit">Reset Password</button>
+//       </form>
+//       {message && <p>{message}</p>}
+//     </div>
+//   );
+// };
+
+// export default ResetPassword;

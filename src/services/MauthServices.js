@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class MAuthService {
   constructor() {
-    this.baseApiUrl = 'https://tasky-backend-eosin.vercel.app/api' || '';
+    this.baseApiUrl = 'http://localhost:5001/api' || '';
 
     this.instance = axios.create({
       baseURL: this.baseApiUrl,
@@ -41,6 +41,31 @@ class MAuthService {
   async login(data) {
     try {
       const response = await this.instance.post('/auth/users/login', data);
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || 'Login failed.');
+      }
+      throw error;
+    }
+  }
+
+  async resetrequest(data) {
+    try {
+      const response = await this.instance.post('/auth/users/reset-password-request', data);
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || 'Login failed.');
+      }
+      throw error;
+    }
+  }
+
+
+  async resetEmail(data) {
+    try {
+      const response = await this.instance.post('/auth/users/reset-password', data);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
