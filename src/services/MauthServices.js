@@ -74,6 +74,17 @@ class MAuthService {
       throw error;
     }
   }
+  async protectedRoute(data) {
+    try {
+      const response = await this.instance.post('/auth/users/protected-route', data);
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || 'Login failed.');
+      }
+      throw error;
+    }
+  }
 }
 
 const authService = new MAuthService();
